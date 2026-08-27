@@ -1,0 +1,67 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+    padding: auto;
+
+}
+
+#quote-display {
+    font-family: monospace;
+    font-size: 1.3-1.5rem;
+    line-height: 1.6;
+}
+
+.correct {
+    color: green;
+}
+.incorrect {
+    color: red;
+}
+.current {
+    border-left: 1px solid;
+    animation: blink 1s infinite;
+}
+
+#typing-input {
+    display: block;
+    width: 100%;
+    min-height: 120px;
+    box-sizing: border-box;
+    margin: 1rem 0;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font: inherit;
+    resize: vertical;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+#restart-button {
+    margin-top: 1rem;
+    padding: 0.6rem 1rem;
+    border: 0;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+#restart-button:hover {
+    background-color: #555;
+    transform: translateY(-1px);
+}
