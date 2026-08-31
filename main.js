@@ -32,8 +32,8 @@ function loadQuote() {
 }
 
 function startTimer() {
-    timerInterval = setInterval(() => {
-        timeer = time -1;
+    timerInterval = setInterval(function () {
+        timer = timer - 1;
         timerDisplay.textContent = timer;
 
         if (timer <= 0) {
@@ -41,3 +41,31 @@ function startTimer() {
         }
     }, 1000);
 }
+
+function chheckInput() {
+    const typedText = input.value;
+    const spans = quoteDisplay.querySelectorAll('span');
+
+    let correctCount = 0;
+
+    spans.forEach((span, index) => {
+        const typedChar = typedText[index];
+
+        if (typedChar == null) {
+            span.classList.remove('correct');
+            span.classList.remove('incorrect');
+            span.classList.remove('current');
+        } else if (typedChar === span.textContent) {
+            span.classList.add('correct');
+            span.classList.remove('incorrect');
+            correctCount++;
+        } else {
+            span.classList.add('incorrect');
+            span.classList.remove('correct');
+        } 
+    });
+    
+    if (typedText.length < chosenQuote.length) {
+        spans[typedText.length].classList.add('current');
+        
+
