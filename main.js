@@ -67,5 +67,11 @@ function chheckInput() {
     
     if (typedText.length < chosenQuote.length) {
         spans[typedText.length].classList.add('current');
-        
+    }
+    if (typedText.length === chosenQuote.length) {
+        endTest();
+    }   
+    return correctCount;
+}
+
 
