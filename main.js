@@ -74,4 +74,6 @@ function chheckInput() {
     return correctCount;
 }
 
+function calculateResults(correctCount) {}
+
 
