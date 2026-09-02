@@ -42,7 +42,7 @@ function startTimer() {
     }, 1000);
 }
 
-function chheckInput() {
+function checkInput() {
     const typedText = input.value;
     const spans = quoteDisplay.querySelectorAll('span');
 
@@ -74,6 +74,45 @@ function chheckInput() {
     return correctCount;
 }
 
-function calculateResults(correctCount) {}
+function calculateResults(correctCount) {
+    const typedLength = input.value.length;
+    const elapsedMinutes = (60 - timer) / 60;
+    const wpm = Math.round((correctCount / 5) / elapsedMinutes);
+    const accuracy = Math.round((correctCount / typedLength) * 100);
+
+    wpmDisplay.textContent = wpm;
+    accuracyDisplay.textContent = accuracy + '%';
+
+}
+
+function endTest() {
+    clearInterval(timerInterval);
+    input.disabled = true;
+    const correctCount = checkInput();
+    calculateResults(correctCount);
+}
+
+input.addEventListener('input', function () {
+    if (!hasStarted) {
+        startTimer();
+        hasStarted = true;
+        
+    }   
+    const correctCount = checkInput();
+    calculateResults(correctCount);
+});
+
+restartBtn.addEventListener('click', function () {
+    clearInterval(timerInterval);
+    timer = 60; 
+    timerDisplay.textContent = timer;
+    hasStarted = false;
+    loadQuote();
+    wpmDisplay.textContent = '0';
+    accuracyDisplay.textContent = '0%';
+});
+
+loadQuote();
+
 
 
